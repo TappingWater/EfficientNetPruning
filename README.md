@@ -1,3 +1,8 @@
+---
+header-includes:
+  - \usepackage{float}
+---
+
 # Deep Learning Model Sparsification for Efficient Inference
 
 Chanaka Perera
@@ -22,11 +27,11 @@ The project is organized as:
 
 In addition to the notebooks, the project directory contains the following subfolders:
 
-- **`models/`**: This directory stores the saved versions of the trained EfficientNet-B0 models before any pruning is applied. It serves as a repository for baseline models that can be referenced or restored as needed.
+- **`models/`**: This folder is where the models get saved to
 
-- **`pruned_models/`**: Housing the models after pruning has been performed, this folder allows for easy access to the optimized models. It enables comparison between the original and pruned versions to assess the impact of pruning techniques.
+- **`pruned_models/`**: Folder to store pruned models. Was planned for iterative pruning.
 
-- **`metrics_plots/`**: This folder contains images and visualizations of the various metrics obtained from the pruning experiments. These plots provide a visual representation of model size, FLOPs, accuracy, and other relevant metrics, aiding in the analysis and interpretation of the pruning results.
+- **`metrics_plots/`**: Contains metrics collected from different experiments
 
 ## EfficientNet-B0
 
@@ -280,7 +285,7 @@ pruned models is a better measure of accuracy.
 
 ![Base Model Fine tuning](./metrics_plots/efficientnet_b0_base_training_validation_plots.png)
 
-*Figure 1: Fine tuning results for the fine tuned base model
+*Figure 2: Fine tuning results for the fine tuned base model
 
 ## Pruning
 
@@ -367,7 +372,6 @@ Overall, fine-grained pruning using L1 unstructured methods provides a straightf
 
 I took the base finetuned model and applied fine-grained pruning with different ratios. I then finetuned these models over a few epochs to recover any lost performance. The metrics for these experiment were collected for different pruning ratios is as follow:
 
-0.2:
 ![Fine grained pruning 0.2 Metrics](./metrics_plots/fine_grained_prune_0.2_metrics_table.png)
 
 *Figure 3: Metrics table
@@ -376,7 +380,6 @@ I took the base finetuned model and applied fine-grained pruning with different 
 
 *Figure 4: Fine tuning result
 
-0.5:
 ![Fine grained pruning 0.5 Metrics](./metrics_plots/fine_grained_prune_0.5_metrics_table.png)
 
 *Figure 5: Metrics table
@@ -461,7 +464,6 @@ After setting up the pruner, the `pruner.step()` function executes the pruning p
 Similar to the previous experiment I applied channel level pruning to the base model using different ratios and fine tuned them across
 20 epochs to recover lost performance. The metrics collected for different pruning ratios are as follow:
 
-0.2:
 ![Channel level pruning 0.2 Metrics](./metrics_plots/channel_pruning_0.2_metrics_table.png)
 
 *Figure 7: Metrics table
@@ -470,7 +472,6 @@ Similar to the previous experiment I applied channel level pruning to the base m
 
 *Figure 8: Fine tuning result
 
-0.8:
 ![Channel level pruning 0.8 Metrics](./metrics_plots/channel_pruning_0.8_metrics_table.png)
 
 *Figure 5: Metrics table
